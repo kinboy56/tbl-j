@@ -16,23 +16,23 @@ jobs:
   pack:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           path: src
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: Decryptu/pokeldn
           ref: ${{ inputs.upstream_ref || 'main' }}
           path: upstream
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
       # The repo root also holds README, LICENSE and .github, which must not end up in the package.
       - run: |
           mkdir stage out
-          cp src/plugin.toml src/strings.toml stage/
+          cp -r src/plugin.toml src/strings.toml src/docs stage/
           cd out && python ../upstream/scripts/pack_plugin.py ../stage
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pokeplugin
           path: out/*.pokeplugin
