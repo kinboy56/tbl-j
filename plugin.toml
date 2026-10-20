@@ -1,0 +1,7 @@
+id = "community-ja"
+name = "日本語"
+version = "0.1.0"
+api = "1.5"
+locale = "ja"
+strings = "strings.toml"
+description = "pokeldn の日本語言語パック"
